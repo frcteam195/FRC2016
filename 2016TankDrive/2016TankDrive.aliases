@@ -1,6 +1,6 @@
 [My Computer]
-My Computer = "172.16.24.147"
+My Computer = "127.0.0.1"
 
 [PrototypeDrive]
-PrototypeDrive = "10.1.95.22"
+PrototypeDrive = "roborio-195-frc.local"
 
