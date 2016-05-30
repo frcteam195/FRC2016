@@ -1,5 +1,7 @@
 package org.usfirst.frc.team195.robot;
 
+import org.usfirst.frc.team195.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
@@ -22,31 +24,31 @@ public class Controllers {
 	DoubleSolenoid shiftSol;
 	
 	Controllers() {
-		driveStick = new Joystick(0);
+		driveStick = new Joystick(RobotMap.joystickPort);
 		
-		leftDrive1 = new CANTalon(0);
+		leftDrive1 = new CANTalon(RobotMap.leftDriveMotor1Port);
 		
-		leftDrive2 = new CANTalon(1);
+		leftDrive2 = new CANTalon(RobotMap.leftDriveMotor2Port);
 		leftDrive2.changeControlMode(TalonControlMode.Follower);
-		leftDrive2.set(0);
+		leftDrive2.set(RobotMap.leftDriveMotor1Port);
 		
-		leftDrive3 = new CANTalon(2);
+		leftDrive3 = new CANTalon(RobotMap.leftDriveMotor3Port);
 		leftDrive3.changeControlMode(TalonControlMode.Follower);
-		leftDrive3.set(0);
+		leftDrive3.set(RobotMap.leftDriveMotor1Port);
 		
-		rightDrive1 = new CANTalon(3);
+		rightDrive1 = new CANTalon(RobotMap.rightDriveMotor1Port);
 		
-		rightDrive2 = new CANTalon(4);
+		rightDrive2 = new CANTalon(RobotMap.rightDriveMotor2Port);
 		rightDrive2.changeControlMode(TalonControlMode.Follower);
-		rightDrive2.set(3);
+		rightDrive2.set(RobotMap.rightDriveMotor1Port);
 		
-		rightDrive3 = new CANTalon(5);
+		rightDrive3 = new CANTalon(RobotMap.rightDriveMotor3Port);
 		rightDrive3.changeControlMode(TalonControlMode.Follower);
-		rightDrive3.set(3);
+		rightDrive3.set(RobotMap.rightDriveMotor1Port);
 		
 		robotCompressor = new Compressor();
 		
-		shiftSol = new DoubleSolenoid(0, 1);
+		shiftSol = new DoubleSolenoid(RobotMap.shiftSolForwardPort, RobotMap.shiftSolReversePort);
 	}
 	
 	Joystick getDriveStick() {
