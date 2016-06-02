@@ -16,7 +16,8 @@ public class Winch {
 	private CANTalon winchMotor;
 	private DigitalInput winchLimitSwitch;
 	
-	private boolean winchIsHomed = false;
+	private boolean initiallyHomed = false;
+	private boolean isHomed = false;
 	
 	public Winch(Controllers robotControllers, Sensors robotSensors) {
 		this.robotControllers = robotControllers;
@@ -27,7 +28,7 @@ public class Winch {
 	}
 	
 	public void home() {
-		winchIsHomed = false;
+		isHomed = false;
 		
 		winchMotor.set(.35);
 		Timer.delay(.25);
@@ -43,10 +44,15 @@ public class Winch {
 		winchMotor.enable();
 		winchMotor.set(0);
 		
-		winchIsHomed = true;
+		initiallyHomed = true;
+		isHomed = true;
 	}
 	
-	public boolean winchIsHomed() {
-		return winchIsHomed;
+	public boolean initiallyHomed() {
+		return initiallyHomed;
+	}
+	
+	public boolean isHomed() {
+		return isHomed;
 	}
 }

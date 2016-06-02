@@ -10,15 +10,16 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Tensioner {
-	Controllers robotControllers;
-	Sensors robotSensors;
+	private Controllers robotControllers;
+	private Sensors robotSensors;
 	
-	CANTalon tensionerMotor;
-	DigitalInput tensionerLimitSwitch;
+	private CANTalon tensionerMotor;
+	private DigitalInput tensionerLimitSwitch;
 	
-	private boolean tensionerIsHomed = false;
+	private boolean initiallyHomed = false;
+	private boolean isHomed = false;
 	
-	Tensioner(Controllers robotControllers, Sensors robotSensors) {
+	public Tensioner(Controllers robotControllers, Sensors robotSensors) {
 		this.robotControllers = robotControllers;
 		this.robotSensors = robotSensors;
 		
@@ -27,7 +28,7 @@ public class Tensioner {
 	}
 	
 	public void home() {
-		tensionerIsHomed = false;
+		isHomed = false;
 		
 		tensionerMotor.set(-.5);
 		Timer.delay(.06);
@@ -43,10 +44,15 @@ public class Tensioner {
 		tensionerMotor.enable();
 		tensionerMotor.set(0);
 		
-		tensionerIsHomed = true;
+		initiallyHomed = true;
+		isHomed = true;
 	}
 	
-	public boolean tensionerIsHomed() {
-		return tensionerIsHomed;
+	public boolean initiallyHomed() {
+		return initiallyHomed;
+	}
+	
+	public boolean isHomed() {
+		return isHomed;
 	}
 }

@@ -5,6 +5,8 @@ import com.team195.frc2016.RobotMap;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class Sensors {
+	RobotMap sensorPorts;
+	
 	private DigitalInput ballInCatapultSensor;
 	private DigitalInput ballInIntakeSensor;
 	
@@ -12,11 +14,13 @@ public class Sensors {
 	private DigitalInput tensionerLimitSwitch;
 	
 	Sensors() {
-		ballInCatapultSensor = new DigitalInput(RobotMap.ballInCatapultSensorPort);
-		ballInIntakeSensor = new DigitalInput(RobotMap.ballInIntakeSensorPort);
+		sensorPorts = new RobotMap();
 		
-		winchLimitSwitch = new DigitalInput(RobotMap.winchLimitSwitchPort);
-		tensionerLimitSwitch = new DigitalInput(RobotMap.tensionerLimitSwitchPort);
+		ballInCatapultSensor = new DigitalInput(sensorPorts.getBallInCatapultSensorPort());
+		ballInIntakeSensor = new DigitalInput(sensorPorts.getBallInIntakeSensorPort());
+		
+		winchLimitSwitch = new DigitalInput(sensorPorts.getWinchLimitSwitchPort());
+		tensionerLimitSwitch = new DigitalInput(sensorPorts.getTensionerLimitSwitchPort());
 	}
 	
 	public DigitalInput getBallInCatapultSensor() {

@@ -1,16 +1,16 @@
 package com.team195.frc2016.Threads;
 
-import com.team195.frc2016.Controllers;
+import com.team195.frc2016.Subsystems.Arm;
 
 public class HomeArmThread extends Thread {
-	private Controllers robotControllers;
+	private Arm awesomeBar;
 
-	HomeArmThread(Controllers robotControllers) {
-		this.robotControllers = robotControllers;
+	public HomeArmThread(Arm awesomeBar) {
+		this.awesomeBar = awesomeBar;
 	}
 	
 	@Override
 	public void run() {
-		
+		awesomeBar.home();
 	}
 }

@@ -7,22 +7,23 @@ import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 
 public class Arm {
-	Controllers robotControllers;
+	private Controllers robotControllers;
 	
-	CANTalon armMotor;
+	private CANTalon armMotor;
 	
 	private int armHomeValue = -13854;
 	
-	private boolean armIsHomed = false;
+	private boolean initiallyHomed = false;
+	private boolean isHomed = false;
 	
-	Arm(Controllers robotControllers) {
+	public Arm(Controllers robotControllers) {
 		this.robotControllers = robotControllers;
 		
 		armMotor = this.robotControllers.getArmMotor();
 	}
 	
 	public void home() {
-		armIsHomed = false;
+		isHomed = false;
 		
 		armMotor.setEncPosition(armHomeValue);
 		armMotor.changeControlMode(TalonControlMode.Position);
@@ -35,10 +36,15 @@ public class Arm {
 		armMotor.enable();
 		armMotor.set(armHomeValue);
 		
-		armIsHomed = true;
+		initiallyHomed = true;
+		isHomed = true;
 	}
 	
-	public boolean armIsHomed() {
-		return armIsHomed;
+	public boolean initiallyHomed() {
+		return initiallyHomed;
+	}
+	
+	public boolean isHomed() {
+		return isHomed;
 	}
 }

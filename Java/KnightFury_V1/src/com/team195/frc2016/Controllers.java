@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Controllers {
+	private RobotMap controllerPorts;
+	
 	private Joystick driveStick;
 	private Joystick buttonBox1;
 	private Joystick buttonBox2;
@@ -32,31 +34,33 @@ public class Controllers {
 	private DoubleSolenoid ballHolder;
 	
 	Controllers() {
-		driveStick = new Joystick(RobotMap.driveStickPort);
-		buttonBox1 = new Joystick(RobotMap.buttonBox1Port);
-		buttonBox2 = new Joystick(RobotMap.buttonBox2Port);
+		controllerPorts = new RobotMap();
 		
-		leftDrive1 = new CANTalon(RobotMap.leftDrive1Port);
-		leftDrive2 = new CANTalon(RobotMap.leftDrive2Port);
+		driveStick = new Joystick(controllerPorts.getDriveStickPort());
+		buttonBox1 = new Joystick(controllerPorts.getButtonBox1Port());
+		buttonBox2 = new Joystick(controllerPorts.getButtonBox2Port());
+		
+		leftDrive1 = new CANTalon(controllerPorts.getLeftDrive1Port());
+		leftDrive2 = new CANTalon(controllerPorts.getLeftDrive2Port());
 		leftDrive2.changeControlMode(TalonControlMode.Follower);
-		leftDrive2.set(RobotMap.leftDrive1Port);
-		rightDrive1 = new CANTalon(RobotMap.rightDrive1Port);
-		rightDrive2 = new CANTalon(RobotMap.rightDrive2Port);
+		leftDrive2.set(controllerPorts.getLeftDrive1Port());
+		rightDrive1 = new CANTalon(controllerPorts.getRightDrive1Port());
+		rightDrive2 = new CANTalon(controllerPorts.getRightDrive2Port());
 		rightDrive2.changeControlMode(TalonControlMode.Follower);
-		rightDrive2.set(RobotMap.rightDrive1Port);
+		rightDrive2.set(controllerPorts.getRightDrive1Port());
 		
-		intakeMotor = new CANTalon(RobotMap.intakeMotorPort);
-		armMotor = new CANTalon(RobotMap.armMotorPort);
-		winchMotor = new CANTalon(RobotMap.winchMotorPort);
-		tensionerMotor = new CANTalon(RobotMap.tensionerMotorPort);
-		manipulatorMotor = new CANTalon(RobotMap.manipulatorMotorPort);
+		intakeMotor = new CANTalon(controllerPorts.getIntakeMotorPort());
+		armMotor = new CANTalon(controllerPorts.getArmMotorPort());
+		winchMotor = new CANTalon(controllerPorts.getWinchMotorPort());
+		tensionerMotor = new CANTalon(controllerPorts.getTensionerMotorPort());
+		manipulatorMotor = new CANTalon(controllerPorts.getManipulatorMotorPort());
 		
-		leftClimberMotor = new CANTalon(RobotMap.leftClimberMotorPort);
-		rightClimberMotor = new CANTalon(RobotMap.rightClimberMotorPort);
+		leftClimberMotor = new CANTalon(controllerPorts.getLeftClimberMotorPort());
+		rightClimberMotor = new CANTalon(controllerPorts.getRightClimberMotorPort());
 		
-		trigger = new Solenoid(RobotMap.triggerPort);
-		shiftSol = new DoubleSolenoid(RobotMap.shiftSolForwardPort, RobotMap.shiftSolReversePort);
-		ballHolder = new DoubleSolenoid(RobotMap.ballholderForwardPort, RobotMap.ballHolderReversePort);
+		trigger = new Solenoid(controllerPorts.getTriggerPort());
+		shiftSol = new DoubleSolenoid(controllerPorts.getShiftSolForwardPort(), controllerPorts.getShiftSolReversePort());
+		ballHolder = new DoubleSolenoid(controllerPorts.getBallHolderForwardPort(), controllerPorts.getBallHolderReversePort());
 	}
 	
 	public Joystick getDriveStick() {

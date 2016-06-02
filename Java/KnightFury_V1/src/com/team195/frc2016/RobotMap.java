@@ -1,127 +1,127 @@
 package com.team195.frc2016;
 
 public final class RobotMap {
-	static final int driveStickPort = 0;
-	static final int buttonBox1Port = 1;
-	static final int buttonBox2Port = 2;
+	private final int driveStickPort = 0;
+	private final int buttonBox1Port = 1;
+	private final int buttonBox2Port = 2;
 	
-	static final int leftDrive1Port = 11;
-	static final int leftDrive2Port = 1;
-	static final int rightDrive1Port = 2;
-	static final int rightDrive2Port = 3;
+	private final int leftDrive1Port = 11;
+	private final int leftDrive2Port = 1;
+	private final int rightDrive1Port = 2;
+	private final int rightDrive2Port = 3;
 	
-	static final int intakeMotorPort = 4;
-	static final int armMotorPort = 5;
-	static final int winchMotorPort = 6;
-	static final int tensionerMotorPort = 7;
-	static final int manipulatorMotorPort = 8;
+	private final int intakeMotorPort = 4;
+	private final int armMotorPort = 5;
+	private final int winchMotorPort = 6;
+	private final int tensionerMotorPort = 7;
+	private final int manipulatorMotorPort = 8;
 	
-	static final int leftClimberMotorPort = 9;
-	static final int rightClimberMotorPort = 10;
+	private final int leftClimberMotorPort = 9;
+	private final int rightClimberMotorPort = 10;
 	
-	static final int triggerPort = 1;
+	private final int triggerPort = 1;
 	
-	static final int shiftSolForwardPort = 0;
-	static final int shiftSolReversePort = 2;
+	private final int shiftSolForwardPort = 0;
+	private final int shiftSolReversePort = 2;
 	
-	static final int ballholderForwardPort = 3;
-	static final int ballHolderReversePort = 4;
+	private final int ballholderForwardPort = 3;
+	private final int ballHolderReversePort = 4;
 	
-	static final int ballInCatapultSensorPort = 6;
-	static final int ballInIntakeSensorPort = 7;
+	private final int ballInCatapultSensorPort = 6;
+	private final int ballInIntakeSensorPort = 7;
 	
-	static final int winchLimitSwitchPort = 8;
-	static final int tensionerLimitSwitchPort = 9;
+	private final int winchLimitSwitchPort = 8;
+	private final int tensionerLimitSwitchPort = 9;
 	
-	public static int getDriveStickPort() {
+	public int getDriveStickPort() {
 		return driveStickPort;
 	}
 	
-	public static int getButtonBox1Port() {
+	public int getButtonBox1Port() {
 		return buttonBox1Port;
 	}
 	
-	public static int getButtonBox2Port() {
+	public int getButtonBox2Port() {
 		return buttonBox2Port;
 	}
 	
-	public static int getLeftDrive1Port() {
+	public int getLeftDrive1Port() {
 		return leftDrive1Port;
 	}
 	
-	public static int getLeftDrive2Port() {
+	public int getLeftDrive2Port() {
 		return leftDrive2Port;
 	}
 	
-	public static int getRightDrive1Port() {
+	public int getRightDrive1Port() {
 		return rightDrive1Port;
 	}
 	
-	public static int getRightDrive2Port() {
+	public int getRightDrive2Port() {
 		return rightDrive2Port;
 	}
 	
-	public static int getIntakeMotorPort() {
+	public int getIntakeMotorPort() {
 		return intakeMotorPort;
 	}
 	
-	public static int getArmMotorPort() {
+	public int getArmMotorPort() {
 		return armMotorPort;
 	}
 	
-	public static int getWinchMotorPort() {
+	public int getWinchMotorPort() {
 		return winchMotorPort;
 	}
 	
-	public static int getTensionerMotorPort() {
+	public int getTensionerMotorPort() {
 		return tensionerMotorPort;
 	}
 	
-	public static int getManipulatorMotorPort() {
+	public int getManipulatorMotorPort() {
 		return manipulatorMotorPort;
 	}
 	
-	public static int getLeftClimberMotorPort() {
+	public int getLeftClimberMotorPort() {
 		return leftClimberMotorPort;
 	}
 	
-	public static int getRightClimberMotorPort() {
+	public int getRightClimberMotorPort() {
 		return rightClimberMotorPort;
 	}
 	
-	public static int getTriggerPort() {
+	public int getTriggerPort() {
 		return triggerPort;
 	}
 	
-	public static int getShiftSolForwardPort() {
+	public int getShiftSolForwardPort() {
 		return shiftSolForwardPort;
 	}
 	
-	public static int getShiftSolReversePort() {
+	public int getShiftSolReversePort() {
 		return shiftSolReversePort;
 	}
 	
-	public static int getBallHolderForwardPort() {
+	public int getBallHolderForwardPort() {
 		return ballholderForwardPort;
 	}
 	
-	public static int getBallHolderReversePort() {
+	public int getBallHolderReversePort() {
 		return ballHolderReversePort;
 	}
 	
-	public static int getBallInCatapultSensorPort() {
+	public int getBallInCatapultSensorPort() {
 		return ballInCatapultSensorPort;
 	}
 	
-	public static int getBallInIntakeSensorPort() {
+	public int getBallInIntakeSensorPort() {
 		return ballInIntakeSensorPort;
 	}
 	
-	public static int getWinchLimitSwitchPort() {
+	public int getWinchLimitSwitchPort() {
 		return winchLimitSwitchPort;
 	}
 	
-	public static int getTensionerLimitSwitchPort() {
+	public int getTensionerLimitSwitchPort() {
 		return tensionerLimitSwitchPort;
 	}
 }
