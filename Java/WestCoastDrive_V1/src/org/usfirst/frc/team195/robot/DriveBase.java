@@ -27,6 +27,7 @@ public class DriveBase {
 	double normalLeft;
 	double normalRight;
 	static int maxOutput = 1;
+	static double joystickDeadband = .02;
 	
 	boolean highGear = false;
 	boolean holdLowGear = false;
@@ -45,6 +46,8 @@ public class DriveBase {
 	void arcadeDrive() {
 		x = driveStick.getRawAxis(0);
 		y = driveStick.getRawAxis(1);
+		x = handleDeadband(x, joystickDeadband);
+		y = handleDeadband(y , joystickDeadband);
 		left = y + x;
 		right = y - x;
 		absLeft = Math.abs(left);
@@ -63,8 +66,14 @@ public class DriveBase {
 			normalRight = right;
 		}
 		
+		normalRight *= -1;
+		
 		leftDrive.set(normalLeft);
 		rightDrive.set(normalRight);
+	}
+	
+	double handleDeadband(double joyVal, double deadBand) {
+		return (Math.abs(joyVal) > Math.abs(deadBand)) ? joyVal: 0.0;
 	}
 	
 	void shift() {
