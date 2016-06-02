@@ -94,4 +94,8 @@ public class HomeMotors {
 	public void reHomeTensioner(boolean reHome) {
 		tensionerIsHomed = reHome? false: tensionerIsHomed;
 	}
+	
+	public boolean homingFinished() {
+		return armIsHomed && winchIsHomed && tensionerIsHomed;
+	}
 }

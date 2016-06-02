@@ -2,6 +2,7 @@ package com.team195.frc2016;
 
 import com.team195.frc2016.Controllers;
 import com.team195.frc2016.Sensors;
+import com.team195.frc2016.Subsystems.*;
 import com.team195.frc2016.Commands.*;
 import com.team195.frc2016.Threads.*;
 
@@ -16,6 +17,9 @@ public class Robot extends SampleRobot {
 	private HomeWinchThread homeWinch;
 	private HomeArmThread homeArm;
 	private HomeTensionerThread homeTensioner;
+	
+	private DriveBase cyberDrive;
+	private DriveThread runDrive;
 
 	public Robot() {
 		robotControllers = new Controllers();
@@ -26,6 +30,9 @@ public class Robot extends SampleRobot {
 		homeArm = new HomeArmThread(motorInit);
 		homeWinch = new HomeWinchThread(motorInit);
 		homeTensioner = new HomeTensionerThread(motorInit);
+		
+		cyberDrive = new DriveBase(robotControllers);
+		runDrive = new DriveThread(cyberDrive);
 	}
 
 	@Override
@@ -51,6 +58,9 @@ public class Robot extends SampleRobot {
 			homeWinch.start();
 		if(!homeTensioner.isAlive())
 			homeTensioner.start();
+		if(motorInit.homingFinished()) {
+			runDrive.start();
+		}
 	}
 
 	@Override
