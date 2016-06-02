@@ -1,16 +1,16 @@
 package com.team195.frc2016.Threads;
 
-import com.team195.frc2016.Subsystems.Tensioner;
+import com.team195.frc2016.Commands.HomeMotors;
 
 public class HomeTensionerThread extends Thread {
-	private Tensioner springTensioner;
+	private HomeMotors initTensioner;
 	
-	public HomeTensionerThread(Tensioner springTensioner) {
-		this.springTensioner = springTensioner;
+	public HomeTensionerThread(HomeMotors initTensioner) {
+		this.initTensioner = initTensioner;
 	}
 	
 	@Override
 	public void run() {
-		springTensioner.home();
+		initTensioner.homeTensioner();
 	}
 }

@@ -1,16 +1,16 @@
 package com.team195.frc2016.Threads;
 
-import com.team195.frc2016.Subsystems.Winch;
+import com.team195.frc2016.Commands.HomeMotors;
 
 public class HomeWinchThread extends Thread {
-	private Winch catapultWinch;
+	private HomeMotors initWinch;
 	
-	public HomeWinchThread(Winch catapultWinch) {		
-		this.catapultWinch = catapultWinch;
+	public HomeWinchThread(HomeMotors initWinch) {
+		this.initWinch = initWinch;
 	}
 	
 	@Override
 	public void run() {
-		catapultWinch.home();
+		initWinch.homeWinch();
 	}
 }
