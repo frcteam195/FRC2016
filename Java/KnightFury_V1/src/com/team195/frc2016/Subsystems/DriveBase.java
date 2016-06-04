@@ -36,7 +36,7 @@ public class DriveBase {
 	
 	public void arcadeDrive() {
 		x = driveStick.getRawAxis(0);
-		y = driveStick.getRawAxis(1);
+		y = -driveStick.getRawAxis(1);
 		left = y + x;
 		right = y - x;
 		absLeft = Math.abs(left);

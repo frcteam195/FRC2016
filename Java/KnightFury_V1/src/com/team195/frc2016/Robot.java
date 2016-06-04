@@ -3,7 +3,7 @@ package com.team195.frc2016;
 import com.team195.frc2016.Controllers;
 import com.team195.frc2016.Sensors;
 import com.team195.frc2016.Subsystems.*;
-import com.team195.frc2016.Commands.*;
+//import com.team195.frc2016.Commands.*;
 import com.team195.frc2016.Threads.*;
 
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -12,12 +12,14 @@ public class Robot extends SampleRobot {
 	private Controllers robotControllers;
 	private Sensors robotSensors;
 
-	private HomeMotors motorInit;
+	private Arm awesomeBar;
+	private Winch catapultWinch;
+	private Tensioner catapultTensioner;
 
 	private HomeWinchThread homeWinch;
 	private HomeArmThread homeArm;
 	private HomeTensionerThread homeTensioner;
-	
+
 	private DriveBase cyberDrive;
 	private DriveThread runDrive;
 
@@ -25,12 +27,14 @@ public class Robot extends SampleRobot {
 		robotControllers = new Controllers();
 		robotSensors = new Sensors();
 
-		motorInit = new HomeMotors(robotControllers, robotSensors);
+		awesomeBar = new Arm(robotControllers);
+		catapultWinch = new Winch(robotControllers, robotSensors);
+		catapultTensioner = new Tensioner(robotControllers, robotSensors);
 
-		homeArm = new HomeArmThread(motorInit);
-		homeWinch = new HomeWinchThread(motorInit);
-		homeTensioner = new HomeTensionerThread(motorInit);
-		
+		homeArm = new HomeArmThread(awesomeBar);
+		homeWinch = new HomeWinchThread(catapultWinch);
+		homeTensioner = new HomeTensionerThread(catapultTensioner);
+
 		cyberDrive = new DriveBase(robotControllers);
 		runDrive = new DriveThread(cyberDrive);
 	}
@@ -58,9 +62,8 @@ public class Robot extends SampleRobot {
 			homeWinch.start();
 		if(!homeTensioner.isAlive())
 			homeTensioner.start();
-		if(motorInit.homingFinished()) {
+		if(awesomeBar.isHomed() && catapultWinch.isHomed() && catapultTensioner.isHomed())
 			runDrive.start();
-		}
 	}
 
 	@Override

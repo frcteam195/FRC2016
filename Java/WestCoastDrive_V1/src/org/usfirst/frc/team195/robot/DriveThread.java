@@ -12,6 +12,8 @@ public class DriveThread extends Thread {
 
 	@Override
 	public void run() {
-		robotDrive.arcadeDrive();
+		while(true) {
+			robotDrive.arcadeDrive();
+		}
 	}
 }

@@ -45,7 +45,7 @@ public class DriveBase {
 	
 	void arcadeDrive() {
 		x = driveStick.getRawAxis(0);
-		y = driveStick.getRawAxis(1);
+		y = -driveStick.getRawAxis(1);
 		x = handleDeadband(x, joystickDeadband);
 		y = handleDeadband(y , joystickDeadband);
 		left = y + x;

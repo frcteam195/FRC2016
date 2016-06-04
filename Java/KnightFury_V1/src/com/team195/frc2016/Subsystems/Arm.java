@@ -8,14 +8,16 @@ import edu.wpi.first.wpilibj.CANTalon.FeedbackDevice;
 
 public class Arm {
 	private CANTalon armMotor;
-
-	public Arm(Controllers robotControllers) {
-		armMotor = robotControllers.getArmMotor();
-	}
-
+	
 	private int armStartingPosition = -13854;
 
 	private boolean isHomed = false;
+	
+	private int lastSetpoint = -1;
+	
+	public Arm(Controllers robotControllers) {
+		armMotor = robotControllers.getArmMotor();
+	}
 
 	public void home() {
 		if(!isHomed) {
@@ -34,11 +36,13 @@ public class Arm {
 		}
 	}
 
+	public boolean isHomed() {
+		return isHomed;
+	}
+	
 	public void reHome(boolean reHome) {
 		isHomed = reHome? false: isHomed;
 	}
-
-	private int lastSetpoint = 0;
 	
 	public void setArmSetpoint(int setpoint) {
 		if(isHomed) {
