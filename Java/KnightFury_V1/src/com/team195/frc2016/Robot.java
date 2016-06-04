@@ -15,10 +15,12 @@ public class Robot extends SampleRobot {
 	private Arm awesomeBar;
 	private Winch catapultWinch;
 	private Tensioner catapultTensioner;
+	private Intake robotIntake;
 
 	private HomeWinchThread homeWinch;
 	private HomeArmThread homeArm;
 	private HomeTensionerThread homeTensioner;
+	private IntakeThread runIntake;
 
 	private DriveBase cyberDrive;
 	private DriveThread runDrive;
@@ -30,10 +32,12 @@ public class Robot extends SampleRobot {
 		awesomeBar = new Arm(robotControllers);
 		catapultWinch = new Winch(robotControllers, robotSensors);
 		catapultTensioner = new Tensioner(robotControllers, robotSensors);
+		robotIntake = new Intake(robotControllers);
 
 		homeArm = new HomeArmThread(awesomeBar);
 		homeWinch = new HomeWinchThread(catapultWinch);
 		homeTensioner = new HomeTensionerThread(catapultTensioner);
+		runIntake = new IntakeThread(robotIntake);
 
 		cyberDrive = new DriveBase(robotControllers);
 		runDrive = new DriveThread(cyberDrive);
@@ -62,8 +66,11 @@ public class Robot extends SampleRobot {
 			homeWinch.start();
 		if(!homeTensioner.isAlive())
 			homeTensioner.start();
-		if(awesomeBar.isHomed() && catapultWinch.isHomed() && catapultTensioner.isHomed())
+		
+		if(awesomeBar.isHomed() && catapultWinch.isHomed() && catapultTensioner.isHomed()) {
 			runDrive.start();
+			runIntake.start();
+		}
 	}
 
 	@Override
