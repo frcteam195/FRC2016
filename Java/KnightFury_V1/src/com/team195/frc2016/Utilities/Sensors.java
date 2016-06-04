@@ -1,6 +1,6 @@
-package com.team195.frc2016;
+package com.team195.frc2016.Utilities;
 
-import com.team195.frc2016.RobotMap;
+import com.team195.frc2016.Utilities.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -13,7 +13,7 @@ public class Sensors {
 	private DigitalInput winchLimitSwitch;
 	private DigitalInput tensionerLimitSwitch;
 	
-	Sensors() {
+	public Sensors() {
 		sensorPorts = new RobotMap();
 		
 		ballInCatapultSensor = new DigitalInput(sensorPorts.getBallInCatapultSensorPort());

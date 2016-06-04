@@ -1,6 +1,6 @@
 package com.team195.frc2016.Subsystems;
 
-import com.team195.frc2016.Controllers;
+import com.team195.frc2016.Utilities.Controllers;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;

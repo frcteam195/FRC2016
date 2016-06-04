@@ -1,4 +1,4 @@
-package com.team195.frc2016;
+package com.team195.frc2016.Utilities;
 
 public final class RobotMap {
 	private final int driveStickPort = 0;

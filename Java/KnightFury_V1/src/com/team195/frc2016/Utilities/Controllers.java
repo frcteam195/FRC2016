@@ -1,6 +1,6 @@
-package com.team195.frc2016;
+package com.team195.frc2016.Utilities;
 
-import com.team195.frc2016.RobotMap;
+import com.team195.frc2016.Utilities.RobotMap;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.CANTalon;
@@ -33,7 +33,7 @@ public class Controllers {
 	private DoubleSolenoid shiftSol;
 	private DoubleSolenoid ballHolder;
 	
-	Controllers() {
+	public Controllers() {
 		controllerPorts = new RobotMap();
 		
 		driveStick = new Joystick(controllerPorts.getDriveStickPort());
