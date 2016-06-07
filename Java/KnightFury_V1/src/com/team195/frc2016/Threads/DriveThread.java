@@ -7,14 +7,24 @@ import edu.wpi.first.wpilibj.Timer;
 public class DriveThread extends Thread {
 	private DriveBase cyberDrive;
 	
+	private double startTime = 0;
+	private double timeToRun = 0;
+	
 	public DriveThread(DriveBase cyberDrive) {
 		this.cyberDrive = cyberDrive;
 	}
 	
 	@Override
 	public void run() {
+		startTime = Timer.getFPGATimestamp() * 1000;
 		cyberDrive.arcadeDrive();
 		cyberDrive.shift();
-		Timer.delay(0.005);
+		timeToRun = (Timer.getFPGATimestamp() * 1000) - startTime;
+		
+		try {
+			Thread.sleep((int) (50 - timeToRun));
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

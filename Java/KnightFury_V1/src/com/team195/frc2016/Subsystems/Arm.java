@@ -44,7 +44,7 @@ public class Arm {
 		isHomed = reHome? false: isHomed;
 	}
 	
-	public void setArmSetpoint(int setpoint) {
+	public void setSetpoint(int setpoint) {
 		if(isHomed) {
 			if(setpoint != lastSetpoint) {
 				armMotor.set(setpoint);

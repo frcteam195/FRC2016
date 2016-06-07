@@ -3,7 +3,7 @@ package com.team195.frc2016;
 import com.team195.frc2016.Utilities.Controllers;
 import com.team195.frc2016.Utilities.Sensors;
 import com.team195.frc2016.Subsystems.*;
-//import com.team195.frc2016.Commands.*;
+import com.team195.frc2016.Commands.*;
 import com.team195.frc2016.Threads.*;
 
 import edu.wpi.first.wpilibj.SampleRobot;
@@ -13,12 +13,15 @@ public class Robot extends SampleRobot {
 	private Sensors robotSensors;
 
 	private Arm awesomeBar;
+	private HomeArmThread homeArm;
+	private ControlArm armControlCommand;
+	private ArmControlThread controlArm;
+	
 	private Winch catapultWinch;
 	private Tensioner catapultTensioner;
 	private Intake robotIntake;
 
 	private HomeWinchThread homeWinch;
-	private HomeArmThread homeArm;
 	private HomeTensionerThread homeTensioner;
 	private IntakeThread runIntake;
 
@@ -30,11 +33,14 @@ public class Robot extends SampleRobot {
 		robotSensors = new Sensors();
 
 		awesomeBar = new Arm(robotControllers);
+		homeArm = new HomeArmThread(awesomeBar);
+		armControlCommand = new ControlArm(robotControllers, awesomeBar);
+		controlArm = new ArmControlThread(armControlCommand);
+		
 		catapultWinch = new Winch(robotControllers, robotSensors);
 		catapultTensioner = new Tensioner(robotControllers, robotSensors);
 		robotIntake = new Intake(robotControllers);
 
-		homeArm = new HomeArmThread(awesomeBar);
 		homeWinch = new HomeWinchThread(catapultWinch);
 		homeTensioner = new HomeTensionerThread(catapultTensioner);
 		runIntake = new IntakeThread(robotIntake);
@@ -69,6 +75,7 @@ public class Robot extends SampleRobot {
 		
 		if(awesomeBar.isHomed() && catapultWinch.isHomed() && catapultTensioner.isHomed()) {
 			runDrive.start();
+			controlArm.start();
 			runIntake.start();
 		}
 	}
